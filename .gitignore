@@ -1,2 +1,4 @@
 # Intellij specific files & folders
 /.idea
+/ui/node_modules
+/core/node_modules
