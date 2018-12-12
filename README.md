@@ -1,5 +1,7 @@
 # commoner-store-front
 
-Hello, friends!
+React used for the application frontend
 
-Write something witty here, maybe some build and deployment instructions
+Prisma for the GraphQL client
+
+Yoga for the GraphQL server

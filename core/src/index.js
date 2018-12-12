@@ -13,5 +13,5 @@ server.start({
     origin: process.env.FRONTENT_URL
   }
 }, details => {
-  console.log(`Server is now running on port http://localhost:${details.port}`);
+  console.log(`Server is now running on http://localhost:${details.port}`);
 });
