@@ -4,6 +4,7 @@ import Form from './styles/Form';
 import gql from 'graphql-tag';
 import formatMoney from '../lib/formatMoney';
 import Error from '../components/ErrorMessage';
+import Router from 'next/router';
 
 const CREATE_ITEM_MUTATION = gql`
     mutation CREATE_ITEM_MUTATION(
@@ -29,12 +30,12 @@ class CreateItem extends Component {
   state = {
     title: 'AR-15',
     description: 'Automatic, ammunition not provided. Legal, has appropriate paperwork',
-    image: '',
-    largeImage: '',
+    image: 'ar-15.jpg',
+    largeImage: 'large-ar-15.jpg',
     price: 79999
   };
 
-  handleChange = (e) => { // allow binding to class w/o calling constructor and .bind()
+  handleChange = (e) => { // arrow function instead to allow binding to class w/o calling constructor and .bind()
     const {name, type, value} = e.target;
     const val = type === 'number' ? parseFloat(value) : value;
     this.setState({[name]: val}); // Computed property names (ES6 feat)
@@ -45,12 +46,19 @@ class CreateItem extends Component {
       <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
         {(createItem, {loading, error}) => (
           <Form onSubmit={async (e) => {
+            // Stop form from submitting
             e.preventDefault();
+            // Call the mutation
             const response = await createItem();
+            // Change to single item page
             console.log(response);
+            Router.push({
+              pathname: '/item',
+              query: { id: response.data.createItem.id }
+            });
           }}>
-          <Error error = {error}/>
-            <fieldset disabled = {loading} aria-busy={loading}>
+            <Error error={error}/>
+            <fieldset disabled={loading} aria-busy={loading}>
               <label htmlFor="title">
                 Title
                 <input type="text"
