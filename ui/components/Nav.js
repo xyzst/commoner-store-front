@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import NavStyles from './styles/NavStyles';
+import Link from "next/link";
+import NavStyles from "./styles/NavStyles";
 
 const Nav = () => (
   <NavStyles>
@@ -10,19 +10,13 @@ const Nav = () => (
       <a>Sell</a>
     </Link>
     <Link href="/signup">
-      <a>
-        Sign-up
-      </a>
+      <a>Sign-up</a>
     </Link>
     <Link href="/orders">
-      <a>
-        Orders
-      </a>
+      <a>Orders</a>
     </Link>
     <Link href="/me">
-      <a>
-        Account
-      </a>
+      <a>Account</a>
     </Link>
   </NavStyles>
 );
